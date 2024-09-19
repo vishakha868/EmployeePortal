@@ -1,0 +1,115 @@
+<button type="button" (click)="openModal(employeeForm)" class="btn btn-secondary m-3">
+    Create Employee
+</button>
+<ng-template #employeeForm let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Employee Form</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="EmployeeForm" (ngSubmit)="onsubmit()">
+                <div class="form-group row m-1">
+                  <div class="col-sm-3">
+                    <label for="Name" class="form-label">Name</label>
+                  </div>
+                  <div class="col-sm-5">
+                    <input
+                      type="text"
+                      placeholder="Name"
+                      title="Name"
+                      formControlName="Name"
+                      class="form-control"
+                      [ngClass]="{ 'is-invalid':Name.errors && Name.touched }"
+                    />
+                  </div>
+                </div>
+                <div class="form-group row m-1">
+                  <div class="col-sm-3">
+                    <label for="lastName" class="form-label">Joining Date</label>
+                  </div>
+                  <div class="col-sm-5">
+                    <input
+                      type="text"
+                      placeholder="Enter the Joining Date"
+                      title="Joining Date"
+                      formControlName="JoiningDate"
+                      class="form-control"
+                      [ngClass]="{ 'is-invalid': JoiningDate.errors && JoiningDate.touched }"
+                    />
+                  </div>
+                </div>
+                <div class="form-group row m-1">
+                  <div class="col-sm-3">
+                    <label for="Salary" class="form-label">Salary</label>
+                  </div>
+                  <div class="col-sm-5">
+                    <input
+                      type="number"
+                      placeholder="Enter the Salary"
+                      title="Salary"
+                      formControlName="Salary"
+                      class="form-control"
+                      [ngClass]="{ 'is-invalid': Salary.errors && Salary.touched }"
+                    />
+                  </div>
+                </div>
+                <div class="form-group row m-1">
+                  <div class="col-sm-3">
+                    <label for="Department" class="form-label"
+                      >Department</label
+                    >
+                  </div>
+                  <div class="col-sm-5">
+                    <input
+                      type="text"
+                      placeholder="Enter the dept"
+                      title="Department"
+                      formControlName="Department"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid': Department.errors && Department.touched
+                      }"
+                    />
+                  </div>
+              
+                </div>
+                <div class="form-group row m-1">
+                    <div class="col-sm-3">
+                    <label for="Phone" class="form-label"
+                    >Phone</label
+                  ></div>
+                  <div class="col-sm-5">
+                  <input
+                      type="number"
+                      maxlength="9"
+                      placeholder="Enter the contact"
+                      title="Number"
+                      formControlName="Phone"
+                      class="form-control"
+                      [ngClass]="{ 'is-invalid': Phone.errors &&(Phone.touched || Phone.dirty)}"
+                    />
+                </div>
+                </div>
+                <div class="form-group row m-1">
+                    <div class="col-sm-3">
+                    <label for="Email" class="form-label"
+                    >Email</label
+                  ></div>
+                  <div class="col-sm-5">
+                  <input
+                      type="email"
+                      placeholder="Enter the contact"
+                      title="Email"
+                      formControlName="Email"
+                      class="form-control"
+                      [ngClass]="{ 'is-invalid': Email.errors &&(Email.touched || Email.dirty)}"
+                    /></div>
+                </div>
+          </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="onsubmit()">Submit</button>
+    </div>
+  </ng-template>

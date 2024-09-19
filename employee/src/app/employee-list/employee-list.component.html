@@ -1,0 +1,93 @@
+<div>Total Salary={{totalSalary}}</div>
+
+<table [border]="2">
+  <tr class="p-1">
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Joining Date</th>
+    <th>Department</th>
+    <th>Salary</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let employee of employees | async">
+    <td (click)="routeToEmployee(employee)">
+      <div *ngIf="!employee.isUpdate; else inputName">
+        {{ employee.Name }}
+      </div>
+      <ng-template #inputName>
+        <input type="text" [(ngModel)]="updateEmp.Name" />
+      </ng-template>
+    </td>
+    <td>
+      <div *ngIf="!employee.isUpdate; else inputPhone">
+        {{ employee.Phone }}
+      </div>
+      <ng-template #inputPhone>
+        <input type="text" [(ngModel)]="updateEmp.Phone" />
+      </ng-template>
+    </td>
+    <td>
+      <div *ngIf="!employee.isUpdate; else inputEmail">
+        {{ employee.Email }}
+      </div>
+      <ng-template #inputEmail>
+        <input type="text" [(ngModel)]="updateEmp.Email" />
+      </ng-template>
+    </td>
+    <td>
+      <div *ngIf="!employee.isUpdate; else inputDate">
+        {{ employee.JoiningDate }}
+      </div>
+      <ng-template #inputDate>
+        <input type="text" [(ngModel)]="updateEmp.JoiningDate" />
+      </ng-template>
+    </td>
+    <td>
+      <div *ngIf="!employee.isUpdate; else inputDep">
+        {{ employee.Department }}
+      </div>
+      <ng-template #inputDep>
+        <input type="text" [(ngModel)]="updateEmp.Department" />
+      </ng-template>
+    </td>
+    <td>
+      <div *ngIf="!employee.isUpdate; else inputSalary">
+        {{ employee.Salary }}
+      </div>
+      <ng-template #inputSalary>
+        <input type="text" [(ngModel)]="updateEmp.Salary" />
+      </ng-template>
+    </td>
+    <td>
+      <button
+        *ngIf="!employee.isUpdate"
+        (click)="updateEmployee(employee)"
+        class="btn btn-warning m-1"
+      >
+        Update
+      </button>
+      <button
+        *ngIf="!employee.isUpdate"
+        (click)="deleteEmployee(employee.Id)"
+        class="btn btn-danger m-1"
+      >
+        Delete
+      </button>
+      <button
+        *ngIf="employee.isUpdate"
+        (click)="save()"
+        class="btn btn-primary m-1"
+      >
+        Save
+      </button>
+      <button
+        *ngIf="employee.isUpdate"
+        (click)="cancel(employee)"
+        class="btn btn-secondary m-1"
+      >
+        Cancel
+      </button>
+    </td>
+  </tr>
+</table>
