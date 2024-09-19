@@ -1,0 +1,14 @@
+th,td{
+    padding:1%;
+}
+table{
+    width:95%;
+    margin:1%;
+ 
+}
+table,tr{
+    border:none;
+    border-bottom: 1px solid lightgrey;
+    box-shadow: 5px 5px 5px lightgrey; 
+    border-collapse: collapse;
+}
